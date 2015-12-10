@@ -1,0 +1,25 @@
+<% if logged_in? %>
+<a style="color:white;font-size:20px;padding-left:20px;" href="/admin"> Back </a>
+
+
+<div class="new_div">
+	<ul>
+	<%= form_for @writing, :url => writings_path, :html => { :multipart => true } do |f| %>
+	  <%= f.file_field :avatar %>
+	  <li><%= f.label("Title") %></li>
+	  <%= f.text_field :title %>
+	  <li><%= f.label("Download Link") %></li>
+	  <%= f.text_field :download_link %>
+	  <li><%= f.label("Synopsis") %></li>
+	  <%= f.text_field :synopsis %>
+	  <li><%= f.submit %></li>
+	<% end %>	
+	</ul>
+
+</div>
+
+<% else %>
+
+<p>You must be an administrator to access this page, please return to the home site. </p>
+
+<% end %>
